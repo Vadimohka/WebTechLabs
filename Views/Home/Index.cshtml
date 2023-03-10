@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<main class="container">
+    <h2>@ViewData["Text"]</h2>
+    <h3>Список</h3>
+    <ol type="A">
+        @for (int i = 1; i < 5; i++)
+        {
+            <li>элемент @i списка</li>
+        }
+    </ol>
+    <hr />
+    <h3>Форма</h3>
+    <form method="post">
+        <select asp-items="@ViewData["Lst"] as SelectList"></select>
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" name="check-1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Чек-бокс 1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck2" name="check-2">
+                    <label class="form-check-label" for="gridCheck2">
+                        Чек-бокс 2
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                    <label class="form-check-label" for="gridRadios1">
+                        Радио-1
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        Радио-2
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                    <label class="form-check-label" for="gridRadios3">
+                        Радио-3
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputLogin" class="col-sm-2 col-form-label">Логин:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Введите логин">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Пароль:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Введите пароль">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <br />
+</main>

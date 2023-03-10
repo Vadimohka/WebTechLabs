@@ -1,0 +1,71 @@
+﻿@page "{id:int}"
+
+@model WebApplication1.Areas.Admin.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+
+}
+
+<h1>Edit</h1>
+
+<h4>Dish</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Dish.DishId" />
+            <div class="form-group">
+                <label asp-for="Dish.DishName" class="control-label"></label>
+                <input asp-for="Dish.DishName" class="form-control" />
+                <span asp-validation-for="Dish.DishName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Description" class="control-label"></label>
+                <input asp-for="Dish.Description" class="form-control" />
+                <span asp-validation-for="Dish.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Calories" class="control-label"></label>
+                <input asp-for="Dish.Calories" class="form-control" />
+                <span asp-validation-for="Dish.Calories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @if (!string.IsNullOrEmpty(Model.Dish.Image))
+                {
+                    <img src=~/Images/@Model.Dish.Image alt="NoSuchFile" width="150" />
+                }
+                else
+                {
+                    <h4>Файл изображения не задан</h4>
+                }
+                <div class="custom-file mt-3">
+                    <input type="file" class="custom-file-input"
+                           asp-for="Image" id="customFile">
+                    <label class="custom-file-label" for="customFile">
+                        Выберите файл изображения
+                    </label>
+                </div>
+            <div class="form-group">
+                <label asp-for="Dish.DishGroupId" class="control-label"></label>
+                <select asp-for="Dish.DishGroupId" class="form-control" asp-items="ViewBag.DishGroupId"></select>
+                <span asp-validation-for="Dish.DishGroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts{
+    <script src="~/js/bs-custom-file-input.js"></script>
+    <script>
+        bsCustomFileInput.init();
+    </script>
+}

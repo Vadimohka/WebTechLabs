@@ -1,0 +1,51 @@
+﻿@model ListViewModel<Dish>
+
+@{
+    ViewData["Title"] = "Меню";
+    var categories = ViewData["Groups"] as IEnumerable<DishGroup>;
+    int currentGroup = (int)ViewData["CurrentGroup"];
+    var text = currentGroup != 0 ? categories.FirstOrDefault(g => g.DishGroupId == currentGroup)?.GroupName : "Все";
+}
+
+
+
+<div class="row">
+    <div class="col-2">
+        <div class="dropdown mt-2">
+            <a class="btn btn-secondary dropdown-toggle"
+               asp-action="Index" asp-controller="Product"
+               role="button" id="dropdownMenuLink" 
+               data-bs-toggle="dropdown" 
+               aria-expanded="false">
+                @text
+            </a>
+
+            <ul class="dropdown-menu" 
+            aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item"
+                   asp-action="Index"
+                   asp-controller="Product">Все</a>
+                @foreach (var item in categories)
+                {
+                   <li> <a class="dropdown-item"
+                   asp-action="Index"
+                   asp-controller="Product"
+                   asp-route-group="@item.DishGroupId"
+                       asp-route-pageNo="1">@item.GroupName</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="card-group" id="list">
+            <partial name="_ListPartial" model="@Model" />
+        </div>
+        <pager page-current="@Model.CurrentPage"
+               page-total="@Model.TotalPages"
+               action="Index"
+               controller="Product"
+               group-id="@currentGroup"></pager>
+    </div>
+</div>
+
