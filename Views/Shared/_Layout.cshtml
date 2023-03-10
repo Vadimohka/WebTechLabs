@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WEB_10331_Vladymtsev</title>
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="stylesheet" href="css/site.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -27,25 +27,25 @@
     <main>
         @RenderBody()
     </main>
-    <footer>
-        <div class="container">
-            <div class="navbar navbar-dark navbar-expand-md bg-dark">
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="http://www.facebook.com">
-                        <i class="fab fa-facebook-f fa-2x"></i>
-                    </a>
-                    <a class="nav-item nav-link" href="http://www.vk.com">
-                        <i class="fab fa-vk fa-2x"></i>
-                    </a>
-                    <a class="nav-item nav-link" href="http://www.twitter.com">
-                        <i class="fab fa-twitter fa-2x"></i>
-                    </a>
-                </div>
+    <footer class="fixed-bottom">
+        <div class="navbar navbar-dark navbar-expand-md bg-dark">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="http://www.facebook.com">
+                    <i class="fab fa-facebook-f fa-2x"></i>
+                </a>
+                <a class="nav-item nav-link" href="http://www.vk.com">
+                    <i class="fab fa-vk fa-2x"></i>
+                </a>
+                <a class="nav-item nav-link" href="http://www.twitter.com">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
             </div>
         </div>
+
     </footer>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
